@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 	import { defineProps, toRaw } from 'vue';
+	import { storeToRefs } from 'pinia';
 	import { usePlayerStore } from '../store';
 
 	const props = defineProps({
@@ -10,6 +11,7 @@
 	});
 
 	const store = usePlayerStore();
+	const { tracksToPlay } = storeToRefs(store);
 	function play() {
 		store.playTrack(toRaw(props.track));
 	}
@@ -28,7 +30,7 @@
 
 			<div class="track__actions">
 				<button @click="play">Play</button>
-				<button @click="queue">Queue</button>
+				<button @click="queue" :disabled="tracksToPlay.has(track)">Queue</button>
 			</div>
 		</div>
 	</div>

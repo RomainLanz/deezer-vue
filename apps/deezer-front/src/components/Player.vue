@@ -4,6 +4,10 @@
 
 	const store = usePlayerStore();
 	const { currentTrack } = storeToRefs(store);
+
+	function next() {
+		store.next();
+	}
 </script>
 
 <template>
@@ -11,7 +15,7 @@
 		<p v-if="currentTrack === null">You don't have any track to play</p>
 		<template v-else>
 			<p>{{ currentTrack.title }}</p>
-			<audio controls :src="currentTrack.preview"></audio>
+			<audio autoplay controls :src="currentTrack.preview" @ended="next"></audio>
 		</template>
 	</div>
 </template>

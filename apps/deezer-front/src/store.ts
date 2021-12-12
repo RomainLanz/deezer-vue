@@ -16,6 +16,13 @@ export const usePlayerStore = defineStore('player', {
 		removeTrack(track: any) {
 			this.tracksToPlay.delete(track);
 		},
+		next() {
+			if (this.tracksToPlay.size > 0) {
+				const track = this.tracksToPlay.values().next().value;
+				this.currentTrack = track;
+				this.tracksToPlay.delete(track);
+			}
+		},
 	},
 });
 
