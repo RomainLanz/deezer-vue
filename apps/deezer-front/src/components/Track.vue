@@ -13,6 +13,10 @@
 	function play() {
 		store.playTrack(toRaw(props.track));
 	}
+
+	function queue() {
+		store.queueTrack(toRaw(props.track));
+	}
 </script>
 
 <template>
@@ -24,6 +28,7 @@
 
 			<div class="track__actions">
 				<button @click="play">Play</button>
+				<button @click="queue">Queue</button>
 			</div>
 		</div>
 	</div>
@@ -58,6 +63,7 @@
 
 	.track__actions {
 		display: flex;
+		gap: 4px;
 		justify-content: flex-end;
 	}
 </style>
