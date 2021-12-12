@@ -1,5 +1,5 @@
 <script lang="ts" setup></script>
 
 <template>
-	<p>Playlist Detail</p>
+	<RouterLink to="/">Back to Playlist</RouterLink>
 </template>
