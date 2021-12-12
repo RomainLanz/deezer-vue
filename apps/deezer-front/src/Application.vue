@@ -25,6 +25,7 @@
 
 	main {
 		grid-area: main;
+		max-height: 100%;
 	}
 
 	aside {

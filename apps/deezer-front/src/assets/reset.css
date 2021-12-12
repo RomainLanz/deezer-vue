@@ -12,6 +12,7 @@ html,
 body {
 	background-color: var(--light-grey);
 	height: 100%;
+	overflow: hidden;
 }
 
 body {
