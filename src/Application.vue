@@ -1,60 +1,35 @@
 <script lang="ts" setup></script>
 
 <template>
-	<p>Hello World</p>
+	<div class="container">
+		<main>
+			<RouterView />
+		</main>
+		<aside></aside>
+		<footer></footer>
+	</div>
 </template>
 
-<style lang="scss">
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
-
-	* {
-		margin: 0;
-	}
-
-	html,
-	body {
+<style lang="scss" scoped>
+	.container {
+		display: grid;
+		grid-template-areas: 'main aside' 'footer footer';
+		grid-template-columns: 1fr 300px;
+		grid-template-rows: 1fr 100px;
 		height: 100%;
 	}
 
-	body {
-		line-height: 1.5;
-		-webkit-font-smoothing: antialiased;
+	main {
+		grid-area: main;
 	}
 
-	img,
-	picture,
-	video,
-	canvas,
-	svg {
-		display: block;
-		max-width: 100%;
+	aside {
+		border-left: 1px solid var(--darker-grey);
+		grid-area: aside;
 	}
 
-	input,
-	button,
-	textarea,
-	select {
-		font: inherit;
-	}
-
-	p,
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		overflow-wrap: break-word;
-	}
-
-	#app {
-		font-family: Avenir, Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		isolation: isolate;
+	footer {
+		border-top: 1px solid var(--darker-grey);
+		grid-area: footer;
 	}
 </style>
