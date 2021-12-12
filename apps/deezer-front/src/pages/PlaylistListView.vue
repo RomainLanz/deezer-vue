@@ -1,17 +1,13 @@
 <script lang="ts" setup>
-	import { ref, onMounted } from 'vue';
+	import { usePlaylists } from '../hooks';
 
-	const playlists = ref([]);
-	onMounted(async () => {
-		const response = await fetch('http://localhost:8000/playlists').then((r) => r.json());
-		playlists.value = response.data;
-	});
+	const { playlists, isLoading } = usePlaylists();
 </script>
 
 <template>
-	<p v-if="playlists.length <= 0">Loading...</p>
-	<ul>
-		<li v-for="playlist in playlists">
+	<p v-if="isLoading">Loading...</p>
+	<ul v-else>
+		<li v-for="playlist in playlists.data">
 			<RouterLink :to="`/playlists/${playlist.id}`">{{ playlist.title }}</RouterLink>
 		</li>
 	</ul>

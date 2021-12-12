@@ -1,4 +1,8 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+	import { useQueryProvider } from 'vue-query';
+
+	useQueryProvider();
+</script>
 
 <template>
 	<div class="container">
