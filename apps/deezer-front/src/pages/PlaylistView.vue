@@ -1,27 +1,22 @@
 <script lang="ts" setup>
 	import { useRoute } from 'vue-router';
 	import { usePlaylist } from '../hooks';
+	import Track from '../components/Track.vue';
 
 	const route = useRoute();
 	const { playlist, isLoading } = usePlaylist(+route.params.id);
 </script>
 
 <template>
-	<RouterLink to="/">Back to Playlist</RouterLink>
-
 	<p v-if="isLoading">Loading...</p>
 
 	<article v-else>
+		<RouterLink to="/">Back to Playlist</RouterLink>
+
 		<h1>{{ playlist.title }}</h1>
 
 		<section class="tracks">
-			<div class="track" v-for="track in playlist.tracks.data">
-				<img :src="track.album.cover_small" />
-				<div class="track-info">
-					<h3>{{ track.title }}</h3>
-					<p>{{ track.artist.name }}</p>
-				</div>
-			</div>
+			<Track v-for="track in playlist.tracks.data" :key="track.id" :track="track" />
 		</section>
 	</article>
 </template>
@@ -44,27 +39,5 @@
 
 	.tracks > .track:first-child {
 		border-top: 0;
-	}
-
-	.track {
-		align-items: center;
-		border-top: 1px solid var(--darker-grey);
-		display: flex;
-		gap: 4px;
-		padding-block: 8px;
-
-		h3 {
-			font-size: 1.1rem;
-			font-weight: 400;
-		}
-
-		p {
-			font-size: 0.8rem;
-		}
-
-		img {
-			height: 50px;
-			width: 50px;
-		}
 	}
 </style>

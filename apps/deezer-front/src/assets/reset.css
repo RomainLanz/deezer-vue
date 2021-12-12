@@ -11,8 +11,8 @@
 html,
 body {
 	background-color: var(--light-grey);
-	height: 100%;
-	overflow: hidden;
+	height: 100vh;
+	max-height: 100vh;
 }
 
 body {
@@ -48,10 +48,7 @@ h6 {
 
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	isolation: isolate;
-	height: 100%;
 }
 
 :root {

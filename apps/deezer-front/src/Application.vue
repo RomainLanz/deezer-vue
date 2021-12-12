@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 	import { useQueryProvider } from 'vue-query';
+	import Player from './components/Player.vue';
 
 	useQueryProvider();
 </script>
@@ -10,7 +11,9 @@
 			<RouterView />
 		</main>
 		<aside></aside>
-		<footer></footer>
+		<footer>
+			<Player />
+		</footer>
 	</div>
 </template>
 
@@ -20,7 +23,8 @@
 		grid-template-areas: 'main aside' 'footer footer';
 		grid-template-columns: 1fr 300px;
 		grid-template-rows: 1fr 100px;
-		height: 100%;
+		height: 100vh;
+		max-height: 100vh;
 	}
 
 	main {
